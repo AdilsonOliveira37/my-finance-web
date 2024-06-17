@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  db:
+    build: .
+    container_name: my_finance_web
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=my_finance_web
+      - POSTGRES_USER=postgres
