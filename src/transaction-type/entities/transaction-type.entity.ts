@@ -1,8 +1,11 @@
+import { Transaction } from 'src/transactions/entities/transaction.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  OneToMany,
+  DeleteDateColumn,
 } from 'typeorm';
 
 @Entity('tb_transaction_type')
@@ -19,6 +22,9 @@ export class TransactionType {
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  deleted_at: Date;
+  @DeleteDateColumn({ type: 'timestamp' })
+  deleted_at: Date | null;
+
+  @OneToMany(() => Transaction, (transaction) => transaction.transactionType)
+  transactions: Transaction[];
 }

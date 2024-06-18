@@ -7,6 +7,7 @@ import {
   ManyToOne,
   Relation,
   JoinColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 
 @Entity('tb_transaction')
@@ -30,6 +31,6 @@ export class Transaction {
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @DeleteDateColumn({ type: 'timestamp' })
   deleted_at: Date;
 }
