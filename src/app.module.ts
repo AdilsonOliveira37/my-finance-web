@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TransactionsModule } from './transactions/transactions.module';
+import { TransactionModule } from './transaction/transaction.module';
 import { TransactionTypeModule } from './transaction-type/transaction-type.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -9,8 +9,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   controllers: [AppController],
   providers: [AppService],
   imports: [
-    TransactionsModule,
     TransactionTypeModule,
+    TransactionModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',

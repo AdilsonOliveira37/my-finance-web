@@ -28,9 +28,12 @@ export class Transaction {
   @JoinColumn([{ name: 'transaction_type_id', referencedColumnName: 'id' }])
   transactionType: Relation<TransactionType>;
 
+  @Column({ type: 'date', name: 'date' })
+  date: Date;
+
   @CreateDateColumn({ type: 'timestamp' })
-  created_at: Date;
+  createdAt: Date;
 
   @DeleteDateColumn({ type: 'timestamp' })
-  deleted_at: Date;
+  deletedAt: Date;
 }
