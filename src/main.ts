@@ -12,6 +12,12 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors({
+    origin: 'http://localhost:3001', // Permite requisições da origem especificada
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Permite os métodos HTTP especificados
+    allowedHeaders: ['Content-Type'], // Permite os cabeçalhos especificados
+  });
+
   await app.listen(3000);
 }
 bootstrap();

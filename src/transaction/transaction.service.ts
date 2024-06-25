@@ -43,7 +43,7 @@ export class TransactionService {
   }
 
   findAll() {
-    return this.transactionRepository.find();
+    return this.transactionRepository.find({ relations: ['transactionType'] });
   }
 
   async findOne(id: string) {
