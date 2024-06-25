@@ -32,11 +32,9 @@ $ pnpm install
 ```
 4. Rode o comando docker, que fará a criação do banco de dados:
 ```bash
-# Criação do banco
 $ docker compose up
 ```
 5. Execute a aplicação
 ```bash
-# development
 $ pnpm run start
 ```
