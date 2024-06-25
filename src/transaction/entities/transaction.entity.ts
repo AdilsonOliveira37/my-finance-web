@@ -21,10 +21,7 @@ export class Transaction {
   @Column()
   value: number;
 
-  @ManyToOne(() => TransactionType, (transaction) => transaction, {
-    onDelete: 'RESTRICT',
-    onUpdate: 'RESTRICT',
-  })
+  @ManyToOne(() => TransactionType, (transaction) => transaction)
   @JoinColumn([{ name: 'transaction_type_id', referencedColumnName: 'id' }])
   transactionType: Relation<TransactionType>;
 

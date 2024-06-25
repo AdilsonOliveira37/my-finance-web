@@ -64,27 +64,22 @@ export class TransactionService {
     const transactionType = await this.transactionTypeRepository.findOne({
       where: { id: updateTransactionDto.transactionTypeId },
     });
+    console.log(transactionType);
 
-    const newTransaction = transactionType
-      ? {
-          ...updateTransactionDto,
-          transactionType,
-        }
-      : updateTransactionDto;
-
-    await this.transactionRepository.update(id, newTransaction);
+    await this.transactionRepository.update(id, {
+      ...updateTransactionDto,
+      transactionType,
+    });
     return { message: 'Transação atualizada com sucesso.' };
   }
 
   async remove(id: string) {
-    const transactionType = await this.transactionTypeRepository.findOne({
+    const transactionType = await this.transactionRepository.findOne({
       where: { id },
     });
 
     if (!transactionType) {
-      throw new NotFoundException(
-        'Não existe um tipo de transação com esse ID.',
-      );
+      throw new NotFoundException('Não existe uma de transação com esse ID.');
     }
 
     await this.transactionRepository.delete(id);
